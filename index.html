@@ -8,6 +8,7 @@
      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Portfolio</title>
     <link rel="stylesheet" href="estilo.css">
+    
 </head>
 <body>
     <!-- MENU ENCABEZADO -->
@@ -381,26 +382,26 @@
                     </div>
                 </form>
 
-                <!-- <a href="mailto:rody216@gmail.com" id="envio">Mail</a> -->
-                
-                <!-- <script>
-                    const $form = document.querySelector('#form')
-                    $form.addEventListener('submit', handleSubmit)
-
-                    function handleSubmit(event){
-                        event.preventDefault()
-                        const form = new FormData(this)
-                        console.log(form.get('name'))
-                        console.log(form.get('phone'))
-                        console.log(form.get('email'))
-                        console.log(form.get('subject'))
-                        console.log(form.get('message'))
-
-                        $form.reset()
-                    }
-
-
-                </script> -->
+                <script>
+                    const form = document.querySelector('form');
+                    form.addEventListener('submit', (e) => {
+                      e.preventDefault();
+                      // Enviar el formulario a send_email.php
+                      const xhr = new XMLHttpRequest();
+                      xhr.open('POST', 'end_email.php', true);
+                      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                      xhr.send(new FormData(form));
+                  
+                      // Mostrar el modal con el mensaje de éxito
+                      const modal = document.querySelector('#modal');
+                      modal.style.display = 'block';
+                      modal.innerHTML = '<p>Mensaje enviado satisfactoriamente!</p>';
+                      setTimeout(() => {
+                        modal.style.display = 'none';
+                        window.location.href = 'index.html#inicio';
+                      }, 2000);
+                    });
+                  </script>
 
                 
                 <!-- Mapa -->
